@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R9EW10BJGW"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-R9EW10BJGW');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CSS Gradient Generator – Linear, Radial & Conic Gradients Online Free</title>
+<meta name="description" content="Free CSS gradient generator. Create linear, radial and conic gradients with live preview. Copy CSS code instantly. Includes 30+ beautiful presets.">
+<link rel="canonical" href="https://nxtcraft.github.io/css-gradient/">
+<meta property="og:title" content="CSS Gradient Generator — Linear, Radial & Conic">
+<meta property="og:description" content="Generate CSS gradients with live preview and copy code. 30+ presets. Free, instant.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nxtcraft.github.io/css-gradient/">
+<link rel="manifest" href="/css-gradient/manifest.json">
+<meta name="theme-color" content="#a855f7">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f0f1a;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+nav{background:#1a1b2e;border-bottom:1px solid #2d2f52;height:50px;display:flex;align-items:center;padding:0 1.5rem;gap:1rem}
+.brand{font-weight:800;color:#a855f7}
+.nav-links{margin-left:auto}.nav-links a{color:#64748b;font-size:.85rem;text-decoration:none}
+main{max-width:900px;margin:0 auto;padding:1.5rem}
+h1{font-size:1.5rem;font-weight:800;margin-bottom:.3rem}
+.sub{color:#94a3b8;font-size:.9rem;margin-bottom:1.5rem}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:1rem}
+@media(max-width:700px){.layout{grid-template-columns:1fr}}
+.panel{background:#1e1f30;border:1px solid #2d2f52;border-radius:12px;padding:1.25rem}
+label{display:block;font-size:.82rem;font-weight:600;color:#a855f7;margin:.5rem 0 .2rem}
+label:first-child{margin-top:0}
+.type-tabs{display:flex;gap:.4rem;margin-bottom:1rem}
+.type-tab{flex:1;padding:.4rem;border:1.5px solid #2d2f52;border-radius:7px;cursor:pointer;font-size:.8rem;font-weight:600;color:#64748b;text-align:center;transition:all .15s}
+.type-tab.active{background:#a855f7;color:#fff;border-color:#a855f7}
+input[type=range]{width:100%;accent-color:#a855f7}
+.stops-wrap{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.5rem}
+.stop-row{display:flex;align-items:center;gap:.4rem}
+.stop-row input[type=color]{width:40px;height:32px;border:none;border-radius:6px;cursor:pointer;padding:2px;background:none;flex-shrink:0}
+.stop-row input[type=range]{flex:1;height:4px}
+.stop-row input[type=number]{width:52px;background:#0f0f1a;border:1.5px solid #2d2f52;color:#e2e8f0;border-radius:6px;padding:.25rem .35rem;font-size:.8rem;text-align:center;outline:none}
+.stop-row button{background:none;border:none;color:#64748b;cursor:pointer;font-size:1rem;padding:0 .1rem}
+.stop-row button:hover{color:#f87171}
+.btn-add{width:100%;padding:.4rem;background:#16172a;border:1.5px dashed #2d2f52;color:#64748b;border-radius:8px;cursor:pointer;font-size:.82rem;margin-top:.2rem}
+.btn-add:hover{border-color:#a855f7;color:#a855f7}
+.preview-area{border-radius:14px;height:220px;transition:all .2s;margin-bottom:1rem;position:relative}
+.preview-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.7);pointer-events:none}
+.code-box{background:#0f0f1a;border:1px solid #2d2f52;border-radius:8px;padding:.75rem;font-family:monospace;font-size:.8rem;color:#a5b4fc;word-break:break-all;margin-bottom:.5rem;min-height:48px}
+.btn-copy{width:100%;padding:.55rem;background:#a855f7;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:.9rem;transition:all .2s}
+.btn-copy:hover{background:#9333ea}
+.btn-copy.copied{background:#16a34a}
+.presets{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;margin-top:1rem}
+.preset{height:36px;border-radius:7px;cursor:pointer;border:2px solid transparent;transition:transform .1s}
+.preset:hover{transform:scale(1.08);border-color:#a855f7}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">🌈 CSS Gradient</span>
+  <div class="nav-links"><a href="https://nxtcraft.github.io/">All Tools</a></div>
+</nav>
+<main>
+  <h1>CSS Gradient Generator</h1>
+  <p class="sub">Create linear, radial and conic CSS gradients with live preview. Copy code instantly.</p>
+  <div class="layout">
+    <div class="panel">
+      <label>Type</label>
+      <div class="type-tabs">
+        <div class="type-tab active" onclick="setType('linear',this)">Linear</div>
+        <div class="type-tab" onclick="setType('radial',this)">Radial</div>
+        <div class="type-tab" onclick="setType('conic',this)">Conic</div>
+      </div>
+      <div id="angle-wrap">
+        <label>Angle: <span id="angle-val">135</span>°</label>
+        <input type="range" id="angle" min="0" max="360" value="135" oninput="update()">
+      </div>
+      <div id="radial-opts" style="display:none">
+        <label>Shape</label>
+        <select id="radial-shape" onchange="update()" style="width:100%;background:#0f0f1a;border:1.5px solid #2d2f52;color:#e2e8f0;border-radius:8px;padding:.4rem .6rem;font-size:.85rem;outline:none">
+          <option value="ellipse">Ellipse</option>
+          <option value="circle">Circle</option>
+        </select>
+        <label>Position</label>
+        <select id="radial-pos" onchange="update()" style="width:100%;background:#0f0f1a;border:1.5px solid #2d2f52;color:#e2e8f0;border-radius:8px;padding:.4rem .6rem;font-size:.85rem;outline:none">
+          <option value="center">Center</option>
+          <option value="top left">Top Left</option>
+          <option value="top right">Top Right</option>
+          <option value="bottom center">Bottom Center</option>
+        </select>
+      </div>
+      <label style="margin-top:.75rem">Color Stops</label>
+      <div class="stops-wrap" id="stops-wrap"></div>
+      <button class="btn-add" onclick="addStop()">+ Add Stop</button>
+    </div>
+    <div>
+      <div class="preview-area" id="preview"><div class="preview-text">CSS Gradient Preview</div></div>
+      <div class="code-box" id="code-box"></div>
+      <button class="btn-copy" id="copy-btn" onclick="copyCSS()">📋 Copy CSS</button>
+      <div class="presets" id="presets"></div>
+    </div>
+  </div>
+</main>
+<script>
+let gType = 'linear';
+let stops = [
+  { color: '#a855f7', pos: 0 },
+  { color: '#3b82f6', pos: 100 },
+];
+
+const PRESETS = [
+  ['#a855f7','#ec4899'],['#6366f1','#a855f7'],['#0ea5e9','#22d3ee'],
+  ['#10b981','#3b82f6'],['#f59e0b','#ef4444'],['#f97316','#fbbf24'],
+  ['#ec4899','#f97316'],['#8b5cf6','#06b6d4'],['#14b8a6','#a3e635'],
+  ['#e11d48','#7c3aed'],['#0f172a','#1e293b'],['#1e1b4b','#312e81'],
+  ['#fdf2f8','#fff1f2'],['#f0fdf4','#ecfdf5'],['#fff7ed','#fef3c7'],
+];
+
+function renderStops() {
+  const wrap = document.getElementById('stops-wrap');
+  wrap.innerHTML = stops.map((s,i) => `
+    <div class="stop-row">
+      <input type="color" value="${s.color}" oninput="stops[${i}].color=this.value;update()">
+      <input type="range" min="0" max="100" value="${s.pos}" oninput="stops[${i}].pos=+this.value;stops[${i}].posInput=${+this.value};syncPos(${i},this.value);update()">
+      <input type="number" value="${s.pos}" min="0" max="100" oninput="stops[${i}].pos=+this.value;update()" style="width:52px">
+      ${stops.length>2?`<button onclick="removeStop(${i})">✕</button>`:'<span style="width:22px"></span>'}
+    </div>`).join('');
+}
+
+function syncPos(i, v) { stops[i].pos = +v; }
+
+function addStop() {
+  const mid = stops.length >= 2 ? Math.round((stops[stops.length-2].pos + stops[stops.length-1].pos)/2) : 50;
+  stops.splice(stops.length-1, 0, { color:'#ffffff', pos: mid });
+  renderStops(); update();
+}
+
+function removeStop(i) { stops.splice(i,1); renderStops(); update(); }
+
+function setType(t, el) {
+  gType = t;
+  document.querySelectorAll('.type-tab').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('angle-wrap').style.display = t==='linear'?'':'none';
+  document.getElementById('radial-opts').style.display = t==='radial'?'':'none';
+  update();
+}
+
+function buildGradient() {
+  const sorted = [...stops].sort((a,b)=>a.pos-b.pos);
+  const stopStr = sorted.map(s=>`${s.color} ${s.pos}%`).join(', ');
+  if (gType==='linear') {
+    const angle = document.getElementById('angle').value;
+    return `linear-gradient(${angle}deg, ${stopStr})`;
+  } else if (gType==='radial') {
+    const shape = document.getElementById('radial-shape').value;
+    const pos = document.getElementById('radial-pos').value;
+    return `radial-gradient(${shape} at ${pos}, ${stopStr})`;
+  } else {
+    const angle = document.getElementById('angle').value;
+    return `conic-gradient(from ${angle}deg, ${stopStr})`;
+  }
+}
+
+function update() {
+  const a = document.getElementById('angle');
+  if (a) document.getElementById('angle-val').textContent = a.value;
+  const grad = buildGradient();
+  document.getElementById('preview').style.background = grad;
+  document.getElementById('code-box').textContent = `background: ${grad};`;
+}
+
+function copyCSS() {
+  const code = document.getElementById('code-box').textContent;
+  navigator.clipboard.writeText(code).then(()=>{
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='📋 Copy CSS'; btn.classList.remove('copied'); },2000);
+  });
+}
+
+function buildPresets() {
+  const wrap = document.getElementById('presets');
+  wrap.innerHTML = PRESETS.map((p,i)=>`<div class="preset" style="background:linear-gradient(135deg,${p[0]},${p[1]})" title="${p[0]} → ${p[1]}" onclick="applyPreset(${i})"></div>`).join('');
+}
+
+function applyPreset(i) {
+  const p = PRESETS[i];
+  stops = [{ color:p[0], pos:0 }, { color:p[1], pos:100 }];
+  renderStops(); update();
+}
+
+renderStops(); buildPresets(); update();
+</script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('/css-gradient/sw.js');</script>
+</body>
+</html>
